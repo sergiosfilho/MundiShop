@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView android:id="@+id/tvProductItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Cadeira De Balanço Vitoriana"
+        android:textColor="#000"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_toLeftOf="@+id/ivProductItemPhoto" />
+
+    <TextView android:id="@+id/tvProductItemDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:layout_below="@+id/tvProductItemName"
+        android:layout_marginLeft="5dp"
+
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_toLeftOf="@+id/ivProductItemPhoto"
+        android:text="Elegante cadeira de balanço em mogno, de espaldar ondulado e encimado por volutas, forrado em palha da Índia e ladeado por duas colunetas estriadas arrematadas por carrapetas." />
+
+    <TextView android:id="@+id/tvProductItemPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="R$350,00"
+        android:layout_below="@+id/tvProductItemDescription"
+        android:textColor="#4343FF"
+        android:layout_marginLeft="5dp"
+
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_toLeftOf="@+id/ivProductItemPhoto" />
+
+    <ImageView android:id="@+id/ivProductItemPhoto"
+        android:layout_width="74dp"
+        android:layout_height="74dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/no_image_available"
+        android:layout_margin="5dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MundiShop</string>
+    <string name="details">Detalhes do produto</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="purchase_history">Histórico de compras</string>
+    <string name="purchase_title">Comprar</string>
+
+    <string-array name="months_array">
+        <item>Janeiro</item>
+        <item>Fevereiro</item>
+        <item>Março</item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Junho</item>
+        <item>Julho</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Dezembro</item>
+    </string-array>
+
+</resources>

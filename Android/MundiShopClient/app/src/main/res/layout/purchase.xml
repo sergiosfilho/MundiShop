@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView android:id="@+id/tvProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome do produto"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <TextView android:id="@+id/tvProductPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:text="RS999,00"
+                android:textColor="#4343FF"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome do pagador"
+                android:layout_marginTop="25dp"
+                android:textColor="#000"
+                android:textSize="22dp" />
+
+            <EditText android:id="@+id/tbxName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número do cartão"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="22dp" />
+
+            <EditText android:id="@+id/tbxCreditCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CVV"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="22dp" />
+
+            <EditText android:id="@+id/tbxCvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ano de vencimento"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="22dp" />
+
+            <EditText android:id="@+id/tbxCreditCardExpYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mês de vencimento"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="22dp" />
+
+            <Spinner android:id="@+id/cmbMonth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/months_array"
+                android:spinnerMode="dialog"
+                android:spinnerStyle="@android:style/Widget.Spinner.DropDown">
+            </Spinner>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bandeira do cartão"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="22dp" />
+
+            <RadioGroup android:id="@+id/rgFlag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@drawable/visa2"
+                    android:text="Visa"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@drawable/master2"
+                    android:text="Master Card"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@drawable/american2"
+                    android:text="American Express" />
+            </RadioGroup>
+
+            <TextView android:id="@+id/tvErrorFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000"
+                android:visibility="gone"
+                android:textSize="25dp"/>
+
+            <Button android:id="@+id/btnPurchase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:text="Comprar"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

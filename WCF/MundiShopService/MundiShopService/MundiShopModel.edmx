@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MundiShopModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MundiShopModelStoreContainer">
+          <EntitySet Name="Product" EntityType="MundiShopModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductPurchase" EntityType="MundiShopModel.Store.ProductPurchase" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Purchase" EntityType="MundiShopModel.Store.Purchase" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ProductPurchase_Product" Association="MundiShopModel.Store.FK_ProductPurchase_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPurchase" EntitySet="ProductPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPurchase_Purchase" Association="MundiShopModel.Store.FK_ProductPurchase_Purchase">
+            <End Role="Purchase" EntitySet="Purchase" />
+            <End Role="ProductPurchase" EntitySet="ProductPurchase" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="Description" Type="varchar" MaxLength="1000" />
+          <Property Name="Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductPurchase">
+          <Key>
+            <PropertyRef Name="productId" />
+            <PropertyRef Name="purchaseId" />
+          </Key>
+          <Property Name="productId" Type="int" Nullable="false" />
+          <Property Name="purchaseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="150" />
+          <Property Name="CreditCardNumber" Type="varchar" MaxLength="150" />
+          <Property Name="CreditCardCvv" Type="varchar" MaxLength="3" />
+          <Property Name="CreditCardFlag" Type="int" Nullable="false" />
+          <Property Name="CreditCardExpirationYear" Type="int" Nullable="false" />
+          <Property Name="CreditCardExpirationMonth" Type="int" Nullable="false" />
+          <Property Name="dateCreate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ProductPurchase_Product">
+          <End Role="Product" Type="MundiShopModel.Store.Product" Multiplicity="1" />
+          <End Role="ProductPurchase" Type="MundiShopModel.Store.ProductPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPurchase">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPurchase_Purchase">
+          <End Role="Purchase" Type="MundiShopModel.Store.Purchase" Multiplicity="1" />
+          <End Role="ProductPurchase" Type="MundiShopModel.Store.ProductPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPurchase">
+              <PropertyRef Name="purchaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MundiShopModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MundiShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Product" EntityType="MundiShopModel.Product" />
+          <EntitySet Name="Purchase" EntityType="MundiShopModel.Purchase" />
+          <AssociationSet Name="ProductPurchase" Association="MundiShopModel.ProductPurchase">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <NavigationProperty Name="Purchase" Relationship="MundiShopModel.ProductPurchase" FromRole="Product" ToRole="Purchase" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CustomerName" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreditCardNumber" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreditCardCvv" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CreditCardFlag" Nullable="false" />
+          <Property Type="Int32" Name="CreditCardExpirationYear" Nullable="false" />
+          <Property Type="Int32" Name="CreditCardExpirationMonth" Nullable="false" />
+          <Property Type="DateTime" Name="dateCreate" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="MundiShopModel.ProductPurchase" FromRole="Purchase" ToRole="Product" />
+        </EntityType>
+        <Association Name="ProductPurchase">
+          <End Type="MundiShopModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="MundiShopModel.Purchase" Role="Purchase" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MundiShopModelStoreContainer" CdmEntityContainer="MundiShopEntities">
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="MundiShopModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchase">
+            <EntityTypeMapping TypeName="MundiShopModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="dateCreate" ColumnName="dateCreate" />
+                <ScalarProperty Name="CreditCardExpirationMonth" ColumnName="CreditCardExpirationMonth" />
+                <ScalarProperty Name="CreditCardExpirationYear" ColumnName="CreditCardExpirationYear" />
+                <ScalarProperty Name="CreditCardFlag" ColumnName="CreditCardFlag" />
+                <ScalarProperty Name="CreditCardCvv" ColumnName="CreditCardCvv" />
+                <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ProductPurchase" TypeName="MundiShopModel.ProductPurchase" StoreEntitySet="ProductPurchase">
+            <EndProperty Name="Purchase">
+              <ScalarProperty Name="Id" ColumnName="purchaseId" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="productId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MundiShopModel">
+        <EntityTypeShape EntityType="MundiShopModel.Product" Width="1.5" PointX="0.75" PointY="1.375" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="MundiShopModel.Purchase" Width="1.5" PointX="3" PointY="1" Height="2.7494921874999996" />
+        <AssociationConnector Association="MundiShopModel.ProductPurchase" >
+          <ConnectorPoint PointX="2.25" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.3651432291666667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

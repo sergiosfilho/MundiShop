@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Produto adquirido"
+        android:textColor="#000"
+        android:textSize="20dp"/>
+
+    <TextView android:id="@+id/tvHistoryItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome do produto"
+        android:textSize="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valor"
+        android:textColor="#000"
+        android:textSize="20dp"/>
+
+    <TextView android:id="@+id/tvHistoryItemPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R$"
+        android:textSize="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pagador"
+        android:textColor="#000"
+        android:textSize="20dp"/>
+
+    <TextView android:id="@+id/tvHistoryItemCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome do usuário"
+        android:textSize="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forma de pagamento"
+        android:textColor="#000"
+        android:textSize="20dp"/>
+
+    <TextView android:id="@+id/tvHistoryItemCCFlag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bandeira do cartão"
+        android:textSize="16dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp">
+
+    </FrameLayout>
+
+</LinearLayout>
